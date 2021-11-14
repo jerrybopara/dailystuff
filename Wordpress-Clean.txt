@@ -1,3 +1,24 @@
+==> Find the cPanel's having executable files.
+    $ find /home/*/public_html -maxdepth 2 -type f -executable | cut -d'/' -f3 | uniq
+
+==> Search & list files modified in the last 10 days:
+	$ find /home/yourdirectory/yoursite/ -mtime -10 -ls
+
+==> This command searches all files recursively that end with .php for the string “base64_decode” and prints the line number.
+	$ grep --include=*.php -rn . -e "base64_decode"
+	$ grep -r --exclude={wp-app.php,class-simplepie.php,class-IXR.php} base64_decode *
+	
+
+==> Find the files other than these extensions in upload directory. 
+	$ find ./wp-content/uploads/ -type f -not -name "*.jpg" -not -name "*.png" -not -name "*.gif" -not -name "*.jpeg" -not -name "*.webp" -not -name "*.pdf" -not -name "*.css" -not -name "*.js" -not -name "*.json" -not -name "*.cache"
+	
+==> Find all odd syntax files 
+	$ find . -type f -print0 | xargs -0 grep -s -l '\$[[:alpha:]]*\[[[:digit:]]*\]\.\$[[:alpha:]]*\[[[:digit:]]*\]\.\$[[:alpha:]]*\[[[:digit:]]*\]'	| grep -v "Color.php" | xargs ls -ld 
+
+==> find .ico files.
+	$ find ./ -type f -name "*.ico" -exec ls -ld {} \;
+
+
 ==> Python Scan tool
 	PyScan  - https://github.com/bashcode/Pyscan
 	python <(curl -ks https://raw.githubusercontent.com/bashcode/Pyscan/master/pyscan.py)
