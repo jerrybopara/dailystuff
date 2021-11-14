@@ -1,0 +1,9 @@
+==> Python Scan tool
+	PyScan  - https://github.com/bashcode/Pyscan
+	python <(curl -ks https://raw.githubusercontent.com/bashcode/Pyscan/master/pyscan.py)
+
+	DETECT ONLY
+	$ python <(curl -ks https://raw.githubusercontent.com/bashcode/Pyscan/master/pyscan.py)
+
+	CLEAN MALWARE
+	$ python <(curl -ks https://raw.githubusercontent.com/bashcode/Pyscan/master/removeinjections.py)
