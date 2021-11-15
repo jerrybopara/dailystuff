@@ -1,0 +1,31 @@
+---
+- name: Let's get WP-CLI
+  hosts: HOSTGROUP
+  become: yes 
+
+  tasks:
+    - name: Check if wp-cli exists
+      stat: path="/usr/local/bin/wp-cli"
+      register: wpcli_exist
+      tags:
+        - always
+
+    - name: Updating wp-cli
+      # shell: "{{ root_bin }}/wp cli update --yes"
+      shell: "/usr/local/bin/wp-cli cli update --yes" 
+      when: wpcli_exist.stat.exists
+      tags:
+        - wp
+        - update
+
+    - name: Download & setting wp-cli    
+      get_url:
+        url="https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
+        dest="/usr/local/bin/wp-cli"
+        force_basic_auth=yes
+        mode=0755
+      when: not wpcli_exist.stat.exists
+      tags:
+        - wp
+        - install
+
