@@ -1,0 +1,7 @@
+=> CLI API TO get the active php verions of domains - 
+$ whmapi1 php_get_vhost_versions| grep -A 3 "phpversion_source" | grep -A 1 "version: ea-php56"
+
+
+=> CLI API TO SET THE PHP VERSION ON SELECTED VHOST
+$ whmapi1 php_set_vhost_versions vhost-0=$VHOST version=ea-php74
+======
