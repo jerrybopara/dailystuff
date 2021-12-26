@@ -2,3 +2,4 @@
 
 ### With Support of .env - 
 
+> Just rename the ** sample_.env ** to ** .env ** and setup your environment. 
