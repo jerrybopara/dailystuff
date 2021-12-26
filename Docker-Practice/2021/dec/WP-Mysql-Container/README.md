@@ -1,5 +1,4 @@
-## WordPress + MySql:5.7.36 
+## WordPress + MySql:5.7.36 + Dynamic ENV
 
-### With Support of .env - 
-
-> Just rename the ** sample_.env ** to ** .env ** and setup your environment. 
+> Just rename the **sample_.env** to **.env** and setup your environment. 
+> This docker-compose.yml includes -
