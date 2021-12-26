@@ -1,0 +1,41 @@
+version: "3"
+services:
+  db:
+    build: 
+      context: .
+      dockerfile: ./${Database_DockerFile}
+      args:
+        DB_Root_Password: "${DB_Root_Password}"
+    container_name: ${DB_Container}
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_Root_Password}"
+      MYSQL_USER: "${DB_User}"
+      MYSQL_PASSWORD: "${DB_User_Password}"
+      MYSQL_DATABASE: "${DB_Database}"
+    networks:
+      - mylocal_nw  
+    ports:
+      - 3307:3306
+    volumes:
+     # - ${Project_Root}/docker/database/MariaDB/db_data:/var/lib/mysql
+      - ${DB_VolumePath}/${DB_Container}-${DB_Engine}:/var/lib/mysql  
+      - ./conf.d:/etc/mysql/mysql.conf.d
+  
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - ./wordpressfiles:/var/www/html
+    networks:
+      - mylocal_nw
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: "db:3306"
+      WORDPRESS_DB_USER: "user1"
+      WORDPRESS_DB_PASSWORD: "password"
+      WORDPRESS_DB_NAME: "user1_db"
+
+networks:
+  mylocal_nw: {} 
