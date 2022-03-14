@@ -1,0 +1,85 @@
+---
+- hosts: ubuntu_nrpe_hosts, redhat_nrpe_hosts
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+
+  tasks:
+    - name: Distribution
+      debug: msg="{{ ansible_distribution }}"
+      
+    # Below Actions will get performed when Ansible Client is Ubuntu Based OS.   
+    - name: "Update Cache & Installing Needed Tools - Ubuntu|Debian"
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+        pkg:   
+          - nagios-nrpe-server
+          - nagios-plugins
+        state: latest
+      when: ansible_os_family == "Debian"
+        
+    - name: "Copy the local nrpe.cfg to Nrpe Clients - Ubuntu|Debian"
+      copy:
+        src: nrpe-config/nrpe-ubuntu.cfg
+        dest: /etc/nagios/nrpe.cfg
+      register: deploy_nrpe
+      when: ansible_os_family == "Debian"
+
+    - name: "Start/restart and enable nrpe - Ubuntu|Debian"
+      systemd:
+        name: nagios-nrpe-server
+        state: restarted
+        enabled: yes
+      when: deploy_nrpe.changed  
+
+
+    # Below Actions will get performed when Ansible Client is RedHat Based OS. 
+    - name: "Upgrade all packages - RedHat"
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_os_family == "RedHat"
+
+    - name: "Install epel - RedHat"
+      yum:
+        name: epel-release
+        state: latest
+      when: ansible_os_family == "RedHat"  
+
+    - name: "Install nrpe, nagios-plugins-all, Openssl - RedHat"
+      yum: name={{item}} state=present
+      with_items:
+        - nrpe
+        - nagios-plugins-all
+        - openssl  
+      when: ansible_os_family == "RedHat"
+
+    - name: "Deploy nrpe.cfg - RedHat "
+      copy:
+        src: nrpe-config/nrpe-centos.cfg
+        dest: /etc/nagios/nrpe.cfg 
+      register: deploy_nrpe
+      when: ansible_os_family == "RedHat"
+
+    - name: "start/restart and enable nrpe - RedHat"
+      systemd:
+        name: nrpe
+        state: restarted
+        enabled: yes
+      when: 
+        - deploy_nrpe.changed
+        - ansible_os_family == "RedHat"
+
+
+
+
+    # - hosts: all
+    #   tasks:
+    #   - include: Ubuntu.yml
+    #     when: ansible_os_family == "Ubuntu"
+      
+    #   - include: RHEL.yml
+    #     when: ansible_os_family == "RedHat"

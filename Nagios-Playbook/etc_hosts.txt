@@ -1,0 +1,27 @@
+127.0.0.1 localhost
+127.0.0.1 Control-Node
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+# Rack 1 
+10.10.10.36  CYPQ-11
+10.10.10.49  CYPQ-16
+10.10.10.51  CYPQ-17
+10.10.10.53  CYPQ-18
+10.10.10.55  CYPQ-19
+10.10.10.57  CYPQ-20
+
+10.10.10.75  WFP-23
+10.10.10.69  WFP-09
+10.10.10.79  WFP-22
+10.10.10.77  WFP-24
+
+
+# Rack 2 
+

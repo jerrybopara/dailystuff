@@ -1,0 +1,76 @@
+---
+- hosts: RackServers, RackServers_RedHat
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+
+  tasks:
+    - name: Distribution
+      debug: msg="{{ ansible_distribution }}"
+
+    - name: date and time
+      vars:
+        msg: |
+         Date: {{ ansible_date_time.date }}
+         Timezone: {{ ansible_date_time.tz }}
+      debug:
+        msg: "{{ msg.split('\n') }}"
+    
+    - name: network info
+      vars:
+        msg: |
+         All Interface List: {{ ansible_interfaces }}
+         All IP: {{ ansible_all_ipv4_addresses }}
+         Gateway: {{ ansible_default_ipv4.gateway }}
+         Eth0 MAC: {{ ansible_eth0.macaddress }}
+      debug:
+        msg: "{{ msg.split('\n') }}"
+
+    - name: OS and Kernel info
+      vars:
+        msg: |
+         Distribution: {{ ansible_distribution }}
+         Release: {{ ansible_distribution_release }}
+         Distribution Version: {{ ansible_distribution_version }}
+         Kernel: {{ ansible_kernel }}
+         Architecture: {{ ansible_architecture }}
+      debug:
+        msg: "{{ msg.split('\n') }}"
+
+    - name: HW info
+      vars:
+        msg: |
+         CPU: {{ ansible_processor }}
+         CPU Core: {{ ansible_processor_cores }}
+         RAM: {{ ansible_memtotal_mb }}
+         SWAP: {{ ansible_memory_mb.swap.total }}
+      debug:
+        msg: "{{ msg.split('\n') }}"    
+
+    # # Below Actions will get performed when Ansible Client is Ubuntu Based OS.   
+    # - name: "Update Cache & Installing Needed Tools - Ubuntu|Debian"
+    #   apt:
+    #     update_cache: true
+    #     cache_valid_time: 3600
+    #     force_apt_get: true
+    #     pkg:   
+    #       - nagios-nrpe-server
+    #       - nagios-plugins
+    #     state: latest
+    #   when: ansible_os_family == "Debian"
+        
+
+    # # Below Actions will get performed when Ansible Client is RedHat Based OS. 
+    # - name: "Upgrade all packages - RedHat"
+    #   yum:
+    #     name: '*'
+    #     state: latest
+    #   when: ansible_os_family == "RedHat"
+
+    # - name: "Install epel - RedHat"
+    #   yum:
+    #     name: epel-release
+    #     state: latest
+    #   when: ansible_os_family == "RedHat"  
+

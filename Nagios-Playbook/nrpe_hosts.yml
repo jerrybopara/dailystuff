@@ -1,0 +1,33 @@
+---
+all:
+  children: 
+    control:
+      hosts:
+        Control-Node:
+          ansible_user: ubuntu
+          ansible_become: true
+          ansible_connection: local
+          
+    ubuntu_nrpe_hosts:
+      hosts:
+          lightsail-srv1: # 54.227.21.17:
+          nagios_tmp_client: # 54.164.113.65:   
+      vars:
+          ansible_user: ubuntu
+          ansible_become: true
+          ansible_become_user: root
+          host_key_checking: False
+
+    redhat_nrpe_hosts:       
+      hosts:
+          NagiosTmpClient-2: # 23.20.182.2:
+      vars:
+          ansible_user: centos
+          ansible_become: true
+          ansible_become_user: root
+          host_key_checking: False
+
+    # nrpeclients:
+    #   hosts:
+    #       ubuntu_nrpe_hosts:
+    #       redhat_nrpe_hosts:
