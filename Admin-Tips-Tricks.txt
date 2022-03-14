@@ -1,7 +1,61 @@
 => CLI API TO get the active php verions of domains - 
-$ whmapi1 php_get_vhost_versions| grep -A 3 "phpversion_source" | grep -A 1 "version: ea-php56"
-
+  $ whmapi1 php_get_vhost_versions| grep -A 3 "phpversion_source" | grep -A 1 "version: ea-php56"
 
 => CLI API TO SET THE PHP VERSION ON SELECTED VHOST
-$ whmapi1 php_set_vhost_versions vhost-0=$VHOST version=ea-php74
+  $ whmapi1 php_set_vhost_versions vhost-0=$VHOST version=ea-php74
 ======
+
+### MySQL ###
+=> Mysql ProcessList 
+  $ mysql -e "show processlist"
+
+### EXIM  ###
+=> To see most email sending scripts.  - http://www.sant-media.co.uk/2011/03/exim-queue-management-tutorial/
+  $ exim -bp | exiqsumm		
+  $ exim -bp | exiqgrep -zi | xargs exim -Mrm	
+  $ grep cwd /var/log/exim_mainlog | grep -v /var/spool | awk -F"cwd=" '{print $2}' | awk '{print $1}' | sort | uniq -c | sort -n
+  $ exiqgrep -zi|xargs exim -Mrm  
+  $ exim -bp|grep "DOMAIN.COM" | awk {'print $3'} | xargs exim -Mrm
+  $ exiqgrep -ir email@domain.com | xargs exim -Mrm
+
+=> This output, shows how many mails were sent by each director
+  $ awk '$3 ~ /^cwd/{print $3}' /var/log/exim_mainlog | sort | uniq -c | sed "s|^ *||g" | sort -nr				
+   
+=> Count highest Sender
+  $ exim -bpr|grep "<"|awk {'print $4'}|cut -d"<" -f2|cut -d">" -f1|sort -n|uniq -c|sort -n
+
+
+### APACHE ###
+=> Check which Service consuming memory a lot.
+  $ ps -ylC httpd| awk '{x += $8;y += 1} END {print "Apache Memory Usage (MB): "x/1024; print "Average Proccess Size (MB): "x/((y-1)*1024)}'
+  
+
+
+### Connection Tracking
+=> TO count the connections states.
+  $ netstat -nat | awk '{print $6}' | sort | uniq -c | sort -n 
+  
+
+### Process Tracking
+=> Top 10 high cpu usage -processes.
+  $ ps fuax | sort -k3 -rn | head   
+	$ lsof -p $PID 
+
+=> Connections going to other hosts 80.
+	$ lsof -i :80  
+  
+=> 
+$
+
+=> 
+$
+
+=> 
+$
+
+=> 
+$
+
+=> 
+$
+
