@@ -29,7 +29,7 @@ Resources:
     Properties:
       CidrBlock: !Ref VpcCIDR
       EnableDnsSupport: true
-      EnableDNSHostnames: true
+      EnableDnsHostnames: true
       InstanceTenancy: default
       Tags:
         - Key: Name
