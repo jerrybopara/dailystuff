@@ -6,7 +6,7 @@ Parameters:
   EnvironmentName:
     Description: An environment name that is prefixed to resource names
     Type: String
-    Default: JerryCF_Stack1
+    Default: JerryCFStack1
 
   VpcCIDR:
     Description: Default VPC
@@ -29,7 +29,7 @@ Resources:
     Properties:
       CidrBlock: !Ref VpcCIDR
       EnableDnsSupport: true
-      EnableDNsHostnames: true
+      EnableDNSHostnames: true
       InstanceTenancy: default
       Tags:
         - Key: Name
@@ -52,7 +52,8 @@ Resources:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref myVPC
-      AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      # AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      AvailabilityZone: us-west-1a
       CidrBlock: !Ref PublicSubnet1CIDR
       MapPublicIpOnLaunch: true
       Tags:
@@ -62,7 +63,8 @@ Resources:
   PrivateSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      # AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      AvailabilityZone: us-west-1a
       VpcId: !Ref myVPC
       CidrBlock: !Ref PrivateSubnet1CIDR
       MapPublicIpOnLaunch: false
