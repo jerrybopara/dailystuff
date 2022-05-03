@@ -6,7 +6,7 @@ Parameters:
   EnvironmentName:
     Description: An environment name that is prefixed to resource names
     Type: String
-    Default: JerryCFStack1
+    Default: JerryCFStack3
 
   VpcCIDR:
     Description: Default VPC
@@ -81,7 +81,7 @@ Resources:
   NatGateWay1:
     Type: AWS::EC2::NatGateway
     Properties:
-      AllocationID: !GetAtt NatGateway1EIP.AllocationId
+      AllocationId: !GetAtt NatGateway1EIP.AllocationId
       SubnetId: !Ref PublicSubnet1
 
   PublicRouteTable:
@@ -103,8 +103,8 @@ Resources:
   PublicSubnet1RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
-      SubnetId: !Ref PublicRouteTable
-      RouteTableId: !Ref PublicSubnet1
+      RouteTableId: !Ref PublicRouteTable
+      SubnetId: !Ref PublicSubnet1
 
   ## Private Route Table
   PrivateRouteTable1:
@@ -125,8 +125,8 @@ Resources:
   PrivateSubnet1RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
-      SubnetId: !Ref PrivateRouteTable1
-      RouteTableId: !Ref PrivateSubnet1
+      RouteTableId: !Ref PrivateRouteTable1
+      SubnetId: !Ref PrivateSubnet1 
 
   NoIngressSecurityGroup:
       Type: AWS::EC2::SecurityGroup
