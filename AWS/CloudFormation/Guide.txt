@@ -1,21 +1,20 @@
 Followed => 
 1 - CloudFormation ec2 Setup 
-    https://octopus.com/blog/aws-cloudformation-ec2-examples
+  - https://octopus.com/blog/aws-cloudformation-ec2-examples
 
 2 - Getting started with a secure static website
   - https://github.com/aws-samples/amazon-cloudfront-secure-static-site
   - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/getting-started-secure-static-website-cloudformation-template.html
   - https://awstip.com/deploy-a-static-website-to-aws-s3-in-seconds-with-cloudformation-ac489158054f
   - https://medium.al-un.fr/aws-cloudformation-https-static-website-s3-route53-cloudfront-438090157c1f
-  - 
 
+===============================================================
 
+=> Deploy the Stack
+  $ aws --profile ir-jerry-test cloudformation \
+  deploy --template-file vpc-setup.template \
+  --stack-name JerryCFStack1
 
-
-
-aws --profile ir-jerry-test cloudformation \
-deploy --template-file vpc-setup.template \
---stack-name JerryCFStack1
-
-aws --profile ir-jerry-test cloudformation \
-describe-stack-events --stack-name JerryCFStack3
+=> Describe the Events of Stack.
+  $ aws --profile ir-jerry-test cloudformation \
+  describe-stack-events --stack-name JerryCFStack3
