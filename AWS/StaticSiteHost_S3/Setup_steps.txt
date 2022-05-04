@@ -10,11 +10,16 @@
     - PHP Runtime 
        - layers
     - Setup lambda Funtion 
-=> AWS API GateWay Endpoint.    
+=> AWS API GateWay Endpoint.
+
+=============================
+Things to Check 
+ - How we can clear Cache as quickly is possible.
+   https://explainexample.com/computers/aws/aws-cloudfront-flush-cache
+
 =============================
 Cost Estimattion - https://aws.amazon.com/route53/pricing/
-
-Route53 
+1) Route53 
   => $0.50 per hosted zone / month for the first 25 hosted zones
   => $0.10 per hosted zone / month for additional hosted zones
 
@@ -23,4 +28,6 @@ For 1000 Domains / Zones
     0.10/Per Zone => 975 Zones = $ 97.5      
     Total DNS cost - $110/Mo
 
-
+2) S3 Bucket 
+    First 50TB - $0.023 per GB
+    means - 1024GB Cost will be - $23 /Mo
