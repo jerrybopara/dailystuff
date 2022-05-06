@@ -1,7 +1,25 @@
-=> Route 53
+==
+=> Setup Infra
 
-=> IAM - 
-  - IAM user should have following access 
-    - S3 bucket 
-    - Route53 
+=> Upload Site Content 
+
+=> Invalidate the Cache 
+ - 
+
+==
+
+
+Domain - zhnzp.com
+
+
+
+=> S3 
+=> Route 53
+=> ACM
+=> CloudFront 
+=> IAM 
+  - Policy files 
+    - policy file for S3 site buckets.
+
+
     
