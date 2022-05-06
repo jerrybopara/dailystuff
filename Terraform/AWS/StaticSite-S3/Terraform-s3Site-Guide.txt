@@ -4,7 +4,9 @@
 => Upload Site Content 
 
 => Invalidate the Cache 
- - 
+ 
+ - $ aws cloudfront create-invalidation --distribution-id distribution_ID --paths "/*"
+   $ aws --profile ir-jerry-test cloudfront create-invalidation --distribution-id ECV1F8UQ8CEIB --paths "/*"
 
 ==
 
