@@ -1,0 +1,7 @@
+=> Route 53
+
+=> IAM - 
+  - IAM user should have following access 
+    - S3 bucket 
+    - Route53 
+    
