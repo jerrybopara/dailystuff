@@ -1,21 +1,21 @@
 {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "AWS": "arn:aws:iam::027200576913:user/ir-jerry-test"
-        },
-        "Action": "s3:ListBucket",
-        "Resource": "arn:aws:s3:::rapify-terraform"
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "IAM_USER_ARN"
       },
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "AWS": "arn:aws:iam::027200576913:user/ir-jerry-test"
-        },
-        "Action": ["s3:GetObject", "s3:PutObject"],
-        "Resource": "arn:aws:s3:::rapify-terraform/*"
-      }
-    ]
-  }
+      "Action": "s3:ListBucket",
+      "Resource": "TFSTATE-BUCKET-ARN"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "IAM_USER_ARN"
+      },
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "TFSTATE-BUCKET-ARN/*"
+    }
+  ]
+}
