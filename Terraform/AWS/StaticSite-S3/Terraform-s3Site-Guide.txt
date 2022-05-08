@@ -9,12 +9,7 @@
    $ aws --profile ir-jerry-test cloudfront create-invalidation --distribution-id ECV1F8UQ8CEIB --paths "/*"
 
 ==
-
-
 Domain - zhnzp.com
-
-
-
 => S3 
 => Route 53
 => ACM
@@ -23,5 +18,8 @@ Domain - zhnzp.com
   - Policy files 
     - policy file for S3 site buckets.
 
+====
+Video - https://www.youtube.com/watch?v=SLB_c_ayRMo
+Learn - https://learn.hashicorp.com/tutorials/terraform/variables?in=terraform/configuration-language
 
     
