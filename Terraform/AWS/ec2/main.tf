@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "jerry_app_server" {
-  ami           = "ami-0022f774911c1d690"
+  ami           = "ami-02541b8af977f6cdd"
   instance_type = "t2.micro"
   key_name      = "IR-PMTA-AWS"
 
