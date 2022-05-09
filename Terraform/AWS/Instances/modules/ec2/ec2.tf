@@ -17,3 +17,4 @@ resource "aws_instance" "instance" {
     Name = "${var.infra_env}-${var.instance_name}"
   }
 }
+

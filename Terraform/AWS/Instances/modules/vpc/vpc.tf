@@ -11,22 +11,85 @@ resource "aws_vpc" "mainvpc" {
   }
 }
 
-resource "aws_subnet" "public" {
+# Define Public Subnet 1
+resource "aws_subnet" "public-subnet1" {
   vpc_id     = var.vpc_id
   cidr_block = var.subnet_cidr
 
   tags = {
-    Name = "${var.infra_env}-public-subnet"
+    Name = "${var.infra_env}-public-subnet1"
   }
 }
 
-resource "aws_internet_gateway" "internet-igw" {
+# Internet GateWay - 
+resource "aws_internet_gateway" "igw1" {
   vpc_id = aws_vpc.mainvpc.id
 
   tags = {
-    Name = "${var.infra_env}-igw"
+    Name = "${var.infra_env}-igw1"
   }
 
 }
 
+# Route Table for Public Subnet
+resource "aws_route_table" "rtb1" {
+  vpc_id = aws_vpc.mainvpc.id
 
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw1.id
+  }
+
+  tags = {
+    Name = "${var.infra_env}-rtb1"
+  }
+}
+
+# Assosiate Internet GateWay & Route Table
+resource "aws_route_table_association" "public-subnet1_rtb1" {
+  subnet_id      = aws_subnet.public-subnet1.id
+  route_table_id = aws_route_table.rtb1.id
+}
+
+# Security Group - 
+resource "aws_security_group" "SecGrp1" {
+  vpc_id      = aws_vpc.mainvpc.id
+  Name = "SecGrp1" 
+  description = "Security Grp"
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress = {
+    description = "Allow SSH"
+    from_port = 22
+    to_port   = 22
+    protocol  = "tcp"
+    cidr_block = ["0.0.0.0/0"]
+  }
+
+  ingress = {
+    description = "Allow HTTP"
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_block = ["0.0.0.0/0"]
+  }
+
+  ingress = {
+    description = "Allow HTTPS"
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    cidr_block = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
