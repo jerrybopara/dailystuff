@@ -58,4 +58,14 @@ $
 
 => 
 $
+===
 
+### PMTA COMMANDS 
+=> Command to show to top email queue domains.
+ $ pmta show topqueues
+
+=> Command to list the pmta's email queue. 
+ $ pmta list --queue=gmail.queue/se1 
+
+=> Command to delete the queue.
+ $ pmta delete --queue=myacis.com/se1
