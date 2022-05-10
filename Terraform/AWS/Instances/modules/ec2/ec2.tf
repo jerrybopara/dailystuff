@@ -4,12 +4,13 @@ resource "aws_key_pair" "loginkey" {
 }
 
 resource "aws_instance" "instance" {
-  count         = var.ec2_count
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = var.subnet_id
-  
-  key_name      = "default_key"
+  count           = var.ec2_count
+  ami             = var.ami_id
+  instance_type   = var.instance_type
+  subnet_id       = var.subnet_id
+  security_groups = var.sg_id
+
+  key_name                    = "default_key"
   associate_public_ip_address = true
 
 

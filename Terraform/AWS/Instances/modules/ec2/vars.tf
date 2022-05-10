@@ -5,8 +5,9 @@ variable "infra_env" {
 }
 
 variable "instance_name" {} # Instance Name
-variable "ami_id" {}    # Instance AMI ID 
-variable "subnet_id" {} # Subnet ID of VPC - mainvpc Public Subnet 
+variable "ami_id" {}        # Instance AMI ID 
+variable "subnet_id" {}     # Subnet ID of VPC - mainvpc Public Subnet 
+variable "sg_id" {}         # Security Group Created in VPC
 
 # Number of instance needs to be launched.
 variable "ec2_count" {

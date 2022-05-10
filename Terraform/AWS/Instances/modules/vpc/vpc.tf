@@ -55,10 +55,10 @@ resource "aws_route_table_association" "public-subnet1_rtb1" {
 # Public Security Group
 ## 
 resource "aws_security_group" "public" {
-  name = "${var.infra_env}-public-sg"
+  name        = "${var.infra_env}-public-sg"
   description = "Public internet access"
-  vpc_id = aws_vpc.mainvpc.id
- 
+  vpc_id      = aws_vpc.mainvpc.id
+
   tags = {
     Name        = "${var.infra_env}-public-sg"
     Role        = "public"
@@ -73,7 +73,7 @@ resource "aws_security_group_rule" "public_out" {
   to_port     = 0
   protocol    = "-1"
   cidr_blocks = ["0.0.0.0/0"]
- 
+
   security_group_id = aws_security_group.public.id
 }
 
@@ -85,7 +85,7 @@ resource "aws_security_group_rule" "public_in_ssh" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.public.id
 }
- 
+
 resource "aws_security_group_rule" "public_in_http" {
   type              = "ingress"
   from_port         = 80
@@ -94,7 +94,7 @@ resource "aws_security_group_rule" "public_in_http" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.public.id
 }
- 
+
 resource "aws_security_group_rule" "public_in_https" {
   type              = "ingress"
   from_port         = 443
