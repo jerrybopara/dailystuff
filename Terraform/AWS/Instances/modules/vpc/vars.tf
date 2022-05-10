@@ -5,18 +5,18 @@ variable "infra_env" {
   default     = "Jerry-Lab"
 }
 
-# Default CIDR for VPC
-variable "vpc_cidr" {
-  default = "192.168.0.0/21"
-}
+# This variabble is mandatory, but should be passwd while execution.
+variable "vpc_id" {}
 
 # VPC Tenancy 
 variable "tenancy" {
   default = "default"
 }
 
-# This variabble is mandatory, but should be passwd while execution.
-variable "vpc_id" {}
+# Default CIDR for VPC
+variable "vpc_cidr" {
+  default = "192.168.0.0/21"
+}
 
 # Subnet CIDR 
 variable "subnet_cidr" {
