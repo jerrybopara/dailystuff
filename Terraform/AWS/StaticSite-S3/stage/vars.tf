@@ -44,3 +44,12 @@ variable "bucket_name" {
 variable "common_tags" {
   description = "Common tags you want applied to all components."
 }
+
+## - 
+# variable "tfstate_bucket_arn" {
+#   description = "Terrform Bucket ARN"
+# }
+
+# variable "tfstate_iam_user_arn" {
+#     description = "IAM Bucket ARN" 
+# }
