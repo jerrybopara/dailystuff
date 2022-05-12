@@ -21,7 +21,7 @@ $ terraform plan -var-file terraform.tfvars
 => Command to Apply the Changes.
 $ terraform apply -var-file terraform.tfvars 
 
-$ terraform plan -var-file terraform.tfvars -var="infra_env=ajdevtech" -var="domain_name=ajdevtech.com" -var="bucket_name=ajdevtech.com"
+$ terraform plan -var-file terraform.tfvars -var="infra_env=jerrybopara" -var="domain_name=jerrybopara.com" -var="bucket_name=jerrybopara.com"
 
 =======================================================
 Readme Notes 
@@ -39,8 +39,15 @@ Note:
 1) aws_s3_bucket deperecated.
   - Have to setup s3 with aws_s3_bucket_cors_configuration
 
-
+https://www.oss-group.co.nz/blog/automated-certificates-aws
 
 
 https://dev.to/ustundagsemih/how-to-pass-variables-to-a-json-file-in-terraform-57k1
 https://registry.terraform.io/providers/hashicorp/aws/4.0.0/docs/resources/s3_bucket_website_configuration
+
+
+variable "domain_name" {}
+variable "bucket_name" {}
+variable "common_tags" {}
+variable "mydomain-endpoint" {}
+variable "www-mydomain-endpoint" {}
