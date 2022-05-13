@@ -23,12 +23,15 @@ $ terraform apply -var-file terraform.tfvars
 
 $ terraform plan -var-file terraform.tfvars -var="infra_env=jerrybopara" -var="domain_name=jerrybopara.com" -var="bucket_name=jerrybopara.com"
 
-$ terraform plan -var-file terraform.tfvars -var="infra_env=jerrybopara" -var="domain_name=jerrybopara.com" -var="bucket_name=jerrybopara.com"
+$ terraform apply -var-file terraform.tfvars -var="infra_env=zhnzp" -var="domain_name=zhnzp.com" -var="bucket_name=zhnzp.com"
+
+$ terraform destroy -var-file terraform.tfvars -var="infra_env=zhnzp" -var="domain_name=zhnzp.com" -var="bucket_name=zhnzp.com"
 
 
 $ aws s3 cp --recursive pet-shelter s3://www.zhnzp.com/ --region "us-east-1" --profile ir-jerry-test
 
 $ aws s3 rm s3://www.zhnzp.com/ --recursive --region "us-east-1" --profile ir-jerry-test
+
 =======================================================
 Readme Notes 
 1) Create - terraform.tfvars, with following vars.
@@ -37,9 +40,6 @@ Readme Notes
     region="us-east-1"
     bucket=""
     key=""
-
-
-
 =======================================================
 Note:
 1) aws_s3_bucket deperecated.

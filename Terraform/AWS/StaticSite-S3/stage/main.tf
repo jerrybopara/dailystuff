@@ -64,3 +64,8 @@ module "cloudfront" {
     acm-cert-validation-arn = module.aws-acm.certificate-validation-certificate_arn
 
 }
+
+output "Route53_NS" {
+  value       = module.route53.NameServers
+  description = "Name Servers are: "
+}

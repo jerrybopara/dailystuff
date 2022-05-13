@@ -67,3 +67,8 @@ resource "aws_route53_record" "cert_validation" {
 output "aws_route53_record-cert_validation" {
     value = aws_route53_record.cert_validation
 }
+
+output "NameServers" {
+  description = "Domain Name Servers"
+  value = aws_route53_zone.main.name_servers
+}
