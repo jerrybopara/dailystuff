@@ -23,6 +23,12 @@ $ terraform apply -var-file terraform.tfvars
 
 $ terraform plan -var-file terraform.tfvars -var="infra_env=jerrybopara" -var="domain_name=jerrybopara.com" -var="bucket_name=jerrybopara.com"
 
+$ terraform plan -var-file terraform.tfvars -var="infra_env=jerrybopara" -var="domain_name=jerrybopara.com" -var="bucket_name=jerrybopara.com"
+
+
+$ aws s3 cp --recursive pet-shelter s3://www.zhnzp.com/ --region "us-east-1" --profile ir-jerry-test
+
+$ aws s3 rm s3://www.zhnzp.com/ --recursive --region "us-east-1" --profile ir-jerry-test
 =======================================================
 Readme Notes 
 1) Create - terraform.tfvars, with following vars.
@@ -44,10 +50,3 @@ https://www.oss-group.co.nz/blog/automated-certificates-aws
 
 https://dev.to/ustundagsemih/how-to-pass-variables-to-a-json-file-in-terraform-57k1
 https://registry.terraform.io/providers/hashicorp/aws/4.0.0/docs/resources/s3_bucket_website_configuration
-
-
-variable "domain_name" {}
-variable "bucket_name" {}
-variable "common_tags" {}
-variable "mydomain-endpoint" {}
-variable "www-mydomain-endpoint" {}

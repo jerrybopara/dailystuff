@@ -41,12 +41,9 @@ module "route53" {
 
     root_s3_distribution_domain = module.cloudfront.root_s3_distribution-domain_name
     root_s3_distribution_zoneid = module.cloudfront.root_s3_distribution-hosted_zone_id
-
     www_s3_distribution_domain = module.cloudfront.www_s3_distribution-domain_name
     www_s3_distribution_zoneid = module.cloudfront.www_s3_distribution-hosted_zone_id
-
     ssl_certificate-domain_validation_options = module.aws-acm.aws_acm_certificate-ssl_certificate
-
 }
 
 module "aws-acm" {
