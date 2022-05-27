@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 module "my_vpc" {
-  source      = "../modules/vpc/"
+  source      = "./modules/vpc/"
   infra_env   = var.infra_env
   vpc_cidr    = var.vpc_cidr
   tenancy     = var.tenancy
@@ -23,7 +23,7 @@ module "my_vpc" {
 }
 
 module "ec2_Module" {
-  source        = "../modules/ec2"
+  source        = "./modules/ec2"
   count         = var.ec2_count
   instance_name = var.instance_name
   instance_type = var.instance_type

@@ -14,7 +14,7 @@ variable "aws_region" {
 variable "infra_env" {
   description = "infrastructure environment"
   type        = string
-  default     = "Jerry-Lab"
+  # default     = "Jerry-Lab"
 }
 
 # Default CIDR for VPC
@@ -43,10 +43,10 @@ variable "instance_type" {
 # Define the Instance Name here 
 variable "instance_name" {
   type    = string
-  default = "srv"
+  default = "ServerName"
 }
 
 # Define the Instance AMI 
 variable "ami_id" {
-  default = "ami-0dc5e9ff792ec08e3"
+  # default = "ami-0dc5e9ff792ec08e3"
 }
