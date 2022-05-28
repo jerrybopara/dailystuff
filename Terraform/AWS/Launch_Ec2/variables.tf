@@ -1,20 +1,20 @@
 variable "aws_profile" {
   description = "AWS Account Profile to load"
   type        = string
-  default     = "ir-jerry-test"
+  # default     = ""
 }
 
 variable "aws_region" {
   description = "AWS Region"
   type        = string
-  default     = "us-west-1"
+  default     = ""
 }
 
 # ENV NAME OR STACK NAME
 variable "infra_env" {
   description = "infrastructure environment"
   type        = string
-  # default     = "Jerry-Lab"
+  # default     = ""
 }
 
 # Default CIDR for VPC
@@ -33,9 +33,10 @@ variable "subnet_cidr" {
 }
 
 # Servers you want in your ENV/STACK
-variable "ec2_count" {
-  default = 1
-}
+# variable "ec2_count" {
+#   default = 1
+# }
+
 # Define the Instane Type 
 variable "instance_type" {
   default = "t3.micro"
