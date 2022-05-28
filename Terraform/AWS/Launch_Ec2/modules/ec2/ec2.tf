@@ -11,7 +11,7 @@ resource "aws_key_pair" "loginkey" {
 resource "aws_instance" "instance" {
   # Choosing the AZ - us-east-1e
   # availability_zone = data.aws_availability_zones.available.names[0]
-  count           = var.ec2_count
+  # count           = var.ec2_count
   ami             = var.ami_id
   instance_type   = var.instance_type
   subnet_id       = var.subnet_id
@@ -23,11 +23,17 @@ resource "aws_instance" "instance" {
 
   tags = {
     Name = "${var.infra_env}-${var.instance_name}"
+    ManagedBy   = "terraform"
   }
 
   root_block_device { 
     volume_size = 80
     delete_on_termination = true
+    tags = {
+      Name        = "${var.infra_env}-RootVol"
+      Environment = var.infra_env
+      ManagedBy   = "terraform"
+    }
   } 
 
   # Define UserData Here - 
@@ -40,6 +46,12 @@ resource "aws_instance" "instance" {
 resource "aws_eip" "ElasticIp" {
   instance = aws_instance.instance.id
   vpc      = true
+  tags = {
+    Name        = "${var.infra_env}-EIP"
+    Environment = var.infra_env
+    ManagedBy   = "terraform"
+  }
+
 }
 
 

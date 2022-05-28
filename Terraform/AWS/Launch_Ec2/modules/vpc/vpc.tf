@@ -5,7 +5,7 @@ resource "aws_vpc" "mainvpc" {
   enable_dns_hostnames = "true"
 
   tags = {
-    name        = "${var.infra_env}-vpc"
+    Name        = "${var.infra_env}-vpc"
     Environment = var.infra_env
     ManagedBy   = "terraform"
   }
@@ -17,7 +17,7 @@ resource "aws_subnet" "public-subnet1" {
   cidr_block = var.subnet_cidr
 
   tags = {
-    name = "${var.infra_env}-public-subnet1"
+    Name = "${var.infra_env}-public-subnet1"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_internet_gateway" "igw1" {
   vpc_id = aws_vpc.mainvpc.id
 
   tags = {
-    name = "${var.infra_env}-igw1"
+    Name = "${var.infra_env}-igw1"
   }
 
 }
@@ -41,7 +41,7 @@ resource "aws_route_table" "rtb1" {
   }
 
   tags = {
-    name = "${var.infra_env}-rtb1"
+    Name = "${var.infra_env}-rtb1"
   }
 }
 

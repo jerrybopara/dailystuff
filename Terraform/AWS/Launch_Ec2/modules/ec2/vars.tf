@@ -10,9 +10,9 @@ variable "subnet_id" {}     # Subnet ID of VPC - mainvpc Public Subnet
 variable "sg_id" {}         # Security Group Created in VPC
 
 # Number of instance needs to be launched.
-variable "ec2_count" {
-  default = 1
-}
+# variable "ec2_count" {
+#   default = 1
+# }
 
 # Instance Type.
 variable "instance_type" {
