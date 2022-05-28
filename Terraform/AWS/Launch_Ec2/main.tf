@@ -24,6 +24,7 @@ module "my_vpc" {
 
 module "ec2_Module" {
   source        = "./modules/ec2"
+  infra_env     = var.infra_env
   count         = var.ec2_count
   instance_name = var.instance_name
   instance_type = var.instance_type
