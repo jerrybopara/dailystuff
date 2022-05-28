@@ -10,7 +10,7 @@ data "aws_availability_zones" "available" {
 
 resource "aws_instance" "instance" {
   # Choosing the AZ - us-east-1e
-  availability_zone = data.aws_availability_zones.available.names[5]
+  availability_zone = data.aws_availability_zones.available.names[4]
   count           = var.ec2_count
   ami             = var.ami_id
   instance_type   = var.instance_type
