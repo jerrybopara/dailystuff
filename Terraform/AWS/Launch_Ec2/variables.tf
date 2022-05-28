@@ -43,7 +43,7 @@ variable "instance_type" {
 # Define the Instance Name here 
 variable "instance_name" {
   type    = string
-  default = "ServerName"
+  # default = "ServerName"
 }
 
 # Define the Instance AMI 
