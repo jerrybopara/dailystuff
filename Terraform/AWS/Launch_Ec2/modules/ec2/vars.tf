@@ -18,3 +18,9 @@ variable "ec2_count" {
 variable "instance_type" {
   default = "t3.micro"
 }
+
+# Define the Login SSH KEY Name
+variable "key_name" {
+  type    = string
+  default = "default_key"
+}

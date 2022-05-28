@@ -42,8 +42,14 @@ variable "instance_type" {
 }
 # Define the Instance Name here 
 variable "instance_name" {
-  type    = string
+  type = string
   # default = "ServerName"
+}
+
+# Define the Login SSH KEY Name
+variable "key_name" {
+  type    = string
+  default = "default_key"
 }
 
 # Define the Instance AMI 

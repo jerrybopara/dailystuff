@@ -1,6 +1,6 @@
 resource "aws_key_pair" "loginkey" {
-  key_name   = "default_key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDEbhb/BRshQriFfectBcXLAB6zzskRCSXfggNXkLWcotdCHBIw1QzZzPtsqOyJIy9CQ+/gagjl1XHYO4CLnNr40cdUnngNmk5p/noTugreK1u3MEf//tkgJfH83gTYYXbBMaKUIMKTDHIv1uhvVfaXT/zUkHu1nJsDz/rhv0vlT8S0AW8opqeM1Ae5Sb2odhQLxB1jGT0ysprukHAPG4pVMK+P2QtBq9o47Pk+Rss/mW3I0DVWvEjU75z8jqb9KOmzISJkn+PybCMyMz0mCRopqW4NF36BxV/CL30pDUhSB/e/nWjCoXdLmh0QaVeCWY+WQIshmMlU96sE0Q00Z2eOMZrwwV3ckebReuFl2toI5rYOpBu89vhnQlMHZgioasT4NfTvUz3p3qrn3DtuhIDx96gUd3yYjBsIMqYA4iKE/CXHTsqX4HhM4M+mRf3bTOEVhYPSzCiiHfWHGBEzT8lTmIj5iWYx6NckaaY0wBao/FNAbkWre1elZ27839gAMLc= jerry@ideapad"
+  key_name   = var.key_name
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCusc/nK5sEyn4rPCBS4IriFXm27I43JTrWhrpUn2JQDP5olbjWS35JGCZE8mc1N2Un4S3+/73IgwHqIGBhA4HsSWxnabIrJDKeBdWjMQByg3wLKOFUogp6sy86yszpAvUtOxdpNxNUymFUyb75gZZqTlgywb0s82d2iDIgs3dKZsNILdVOUSetAtSqbGv/MGtdCvz62PbCIFyKRkpW4Fep/oKzCk/bZAtx3ItlIZE4ZDeOT0CJ4tWNjKKvJDNGQoj5Hj6gqG5ih4XZqz2wjJpcQpDE8uVyb8xBEcUDZbxlbiMPEY1D4EXBVbSqUuVquFH1ELyLvRz4tVYYJQK2bQe51oBPqC7pbyWW7wdb+qm2vwXa8kii+PHiKdG6ddfXdTVktV5moo1AbiRj9BBxzwx4SMkWPb5RuhF6qJvPO3rEtQDB4leT5SAHQ1u0zrvRg8QvEs9QGZZL2+Mhn3V4ggQ8kqwYremjYbDqS8E4sw2cbKgjDNR22Vdwykdou7Aunrk= jerry@ideapad"
 }
 
 resource "aws_instance" "instance" {
@@ -17,5 +17,18 @@ resource "aws_instance" "instance" {
   tags = {
     Name = "${var.infra_env}-${var.instance_name}"
   }
+
+  root_block_device { 
+    volume_size = 80
+    delete_on_termination = true
+  } 
+
+  # Define UserData Here - 
+  # user_data = <<-EOF
+  #               #! /bin/bash
+  # EOF
 }
+
+
+
 
