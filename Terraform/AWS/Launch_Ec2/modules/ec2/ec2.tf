@@ -4,13 +4,13 @@ resource "aws_key_pair" "loginkey" {
 }
 
 # Declare the data source
-data "aws_availability_zones" "available" {
-  state = "available"
-}
+# data "aws_availability_zones" "available" {
+#   state = "available"
+# }
 
 resource "aws_instance" "instance" {
   # Choosing the AZ - us-east-1e
-  availability_zone = data.aws_availability_zones.available.names[4]
+  # availability_zone = data.aws_availability_zones.available.names[0]
   count           = var.ec2_count
   ami             = var.ami_id
   instance_type   = var.instance_type
