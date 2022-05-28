@@ -3,7 +3,6 @@
 variable "aws_profile" {
   description = "AWS Account Profile to load"
   type        = string
-
 }
 
 variable "aws_region" {
@@ -18,16 +17,16 @@ variable "aws_acm_region" {
 }
 
 # ENV NAME OR STACK NAME
-variable "infra_env" {
-  description = "infrastructure environment"
-  type        = string
-}
+# variable "infra_env" {
+#   description = "infrastructure environment"
+#   type        = string
+# }
 
-# App Name 
-variable "application" {
-  description = "App Name"
-  type        = string
-}
+# # App Name 
+# variable "application" {
+#   description = "App Name"
+#   type        = string
+# }
 
 ## - Domain & Bucket Name Vars
 variable "domain_name" {
