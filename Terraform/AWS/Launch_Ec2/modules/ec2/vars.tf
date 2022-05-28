@@ -1,7 +1,7 @@
 variable "infra_env" {
   description = "infrastructure environment"
   type        = string
-  default     = "Jerry-Lab"
+  # default     = "Jerry-Lab"
 }
 
 variable "instance_name" {} # Instance Name

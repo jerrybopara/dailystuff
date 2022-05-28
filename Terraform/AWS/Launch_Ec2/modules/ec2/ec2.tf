@@ -17,7 +17,7 @@ resource "aws_instance" "instance" {
   subnet_id       = var.subnet_id
   security_groups = var.sg_id
 
-  key_name                    = "default_key"
+  key_name                    = var.key_name
   associate_public_ip_address = true
 
 
