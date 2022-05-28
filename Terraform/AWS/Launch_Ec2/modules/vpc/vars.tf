@@ -2,7 +2,7 @@
 variable "infra_env" {
   description = "infrastructure environment"
   type        = string
-  # default     = "Jerry-Lab"
+  # default     = ""
 }
 
 # This variabble is mandatory, but should be passwd while execution.
