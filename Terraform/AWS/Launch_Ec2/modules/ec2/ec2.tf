@@ -36,6 +36,12 @@ resource "aws_instance" "instance" {
   # EOF
 }
 
+# Getting Elastic Ip & Attaching to Ec2
+resource "aws_eip" "ElasticIp" {
+  instance = aws_instance.instance.id
+  vpc      = true
+}
+
 
 
 
