@@ -1,0 +1,35 @@
+AWS_PROFILE = "AWS_IAM_PROFILE"
+AWS_REGION = "us-east-1"
+
+/* SSH KEY's.*/
+/* I'm using already existing Keys in this setup. */
+Private_Key_Path = "/home/jerry/My_KEY"
+Public_Key_Path = "/home/jerry/My_KEY.pub"
+
+/* Project / ENV Name */
+ProJectName = "ProjectName_Runtime"
+
+/* HostName */
+HostName = "Lambda-RuntimePHP"
+
+/* Instance Name */
+InstanceName = "ProjectName-Lambda-RuntimeENV"
+
+/* Ec2 Instance Type */
+/* InstanceType = "t2.small" */
+InstanceType = "t2.medium"
+
+/* UserName */
+UserName = "ec2-user"
+
+/* Amazon Linux Ami's - https://aws.amazon.com/amazon-linux-ami/ */
+AMI = "ami-0ff8a91507f77f867"
+
+/*SSH KEY - IF already available in AWS */
+PubKeyName = "default_key"
+
+/* VPC CIDR BLOCK*/
+VPC_CIDR = "10.0.0.0/16"
+
+
+
